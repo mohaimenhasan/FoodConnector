@@ -34,31 +34,34 @@ export const styles = StyleSheet.create({
   },
   cuisineItem: {
     alignItems: 'center',
-    marginHorizontal: 5 // Adjust spacing as needed
+    marginHorizontal: 10 // Adjust spacing as needed
   },
   cuisineImage: {
-    width: screenWidth * 0.8,
-    height: 200,
+    width: screenWidth * 0.6,
+    height: 150,
     borderRadius: 10
   },
   cuisineName: {
     marginTop: 10,
     fontSize: 18,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    textAlign: 'center'
   },
   chefItem: {
     alignItems: 'center',
-    marginRight: 20
+    marginHorizontal: 10 // Adjust spacing as needed
   },
   chefImage: {
     width: 100,
     height: 100,
-    borderRadius: 50
+    borderRadius: 50,
+    backgroundColor: '#ccc' // Placeholder color for loading
   },
   chefName: {
     marginTop: 10,
     fontSize: 16,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    textAlign: 'center'
   },
   chefDescription: {
     fontSize: 14,
@@ -67,17 +70,22 @@ export const styles = StyleSheet.create({
   },
   testimonialItem: {
     alignItems: 'center',
-    padding: 20
+    marginHorizontal: 10, // Adjust spacing as needed
+    padding: 20,
+    width: screenWidth * 0.8,
+    backgroundColor: '#f9f9f9',
+    borderRadius: 10
   },
   testimonialReview: {
     fontSize: 16,
     fontStyle: 'italic',
-    textAlign: 'center'
+    textAlign: 'center',
+    marginBottom: 5
   },
   testimonialName: {
-    marginTop: 10,
     fontSize: 14,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    textAlign: 'center'
   },
   actions: {
     flexDirection: 'row',
