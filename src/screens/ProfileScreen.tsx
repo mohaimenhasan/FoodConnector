@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList, ScrollView } from 'react-native';
+import { View, Text, Image, TouchableOpacity, FlatList, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { launchImageLibrary } from 'react-native-image-picker';
 import { styles } from '../styles/ProfileScreenStyles';
+import { RootStackParamList } from '../navigation/types'; // Adjust the import path as necessary
+import { RouteProp } from '@react-navigation/native';
+
+type ProfileScreenRouteProp = RouteProp<RootStackParamList, 'Profile'>;
+type Props = {
+  route: ProfileScreenRouteProp;
+};
 
 interface GalleryItem {
   uri: string;
@@ -26,24 +33,23 @@ interface Profile {
   reviewsList: Review[];
 }
 
-const ProfileScreen: React.FC = () => {
+function ProfileScreen({ route }: Props) {
+  const { chef } = route.params;
+
   const [profile, setProfile] = useState<Profile>({
-    name: 'Jane Doe',
-    description: 'Passionate cook specializing in traditional Bangladeshi cuisine.',
-    contactInfo: 'jane.doe@example.com',
-    followers: 120,
-    reviews: 45,
-    rating: 4.5,
-    gallery: [],
-    reviewsList: [
-      { id: '1', reviewer: 'John Smith', comment: 'Great food!', rating: 5 },
-      // More reviews
-    ]
+    name: chef.name,
+    description: chef.description,
+    contactInfo: chef.email,
+    followers: chef.followers,
+    reviews: chef.reviews,
+    rating: chef.rating,
+    gallery: chef.gallery,
+    reviewsList: chef.reviewsList
   });
 
   const handleImagePicker = () => {
     launchImageLibrary({
-        mediaType: 'video'
+      mediaType: 'video'
     }, (response) => {
       if (response.assets) {
         setProfile({
@@ -58,7 +64,7 @@ const ProfileScreen: React.FC = () => {
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.header}>
-          <Image source={{ uri: 'https://via.placeholder.com/150' }} style={styles.profileImage} />
+          <Image source={{ uri: chef.image }} style={styles.profileImage} />
           <Text style={styles.name}>{profile.name}</Text>
           <Text style={styles.description}>{profile.description}</Text>
           <Text style={styles.contact}>{profile.contactInfo}</Text>

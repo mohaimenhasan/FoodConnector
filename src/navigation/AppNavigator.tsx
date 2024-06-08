@@ -4,12 +4,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../screens/HomeScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import OrdersScreen from '../screens/OrdersScreen';
+import { RootStackParamList } from './types'; // Adjust the import path as necessary
 
-export type RootStackParamList = {
-  Home: undefined;
-  Profile: undefined;
-  Orders: undefined;
-};
 
 const Stack = createStackNavigator<RootStackParamList>();
 

@@ -49,7 +49,11 @@ export const styles = StyleSheet.create({
   },
   chefItem: {
     alignItems: 'center',
-    marginHorizontal: 10 // Adjust spacing as needed
+    marginHorizontal: 10, // Adjust spacing as needed
+    padding: 20,
+    width: screenWidth * 0.8,
+    backgroundColor: '#f9f9f9',
+    borderRadius: 10
   },
   chefImage: {
     width: 100,
