@@ -7,6 +7,7 @@ import { RootStackParamList } from './types'; // Adjust the import path as neces
 import LoginScreen from '../screens/LoginScreen';
 import SignupScreen from '../screens/SignupScreen';
 import { useAuth } from '../contexts/AuthContext';
+import CuisineDetailsScreen from '../screens/CuisineDetailsScreen';
 
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -25,7 +26,8 @@ const AppNavigator: React.FC = () => {
           </>
         )}
         <Stack.Screen name="Profile" component={ProfileScreen} />
-    </Stack.Navigator>
+        <Stack.Screen name="CuisineDetails" component={CuisineDetailsScreen} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 };

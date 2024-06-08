@@ -1,6 +1,6 @@
 // ExampleData.ts
 
-import { Chef, Cuisine, Testimonial, User } from "../types/types";
+import { Chef, Cuisine, MealCategory, Testimonial, User } from "../types/types";
 
 export const MainImageUri = 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800&h=400&fit=crop';
 
@@ -43,12 +43,207 @@ export const LoginUsers: User[] = [
   }
 ];
 
+const BangladeshiBreakfast: MealCategory = {
+  id: '1',
+  categoryName: 'Breakfast',
+  meals: [
+    {
+      id: '1',
+      name: 'Paratha',
+      image: 'https://www.themealdb.com/images/media/meals/58oia61564916529.jpg',
+      description: 'A popular flatbread made with wheat flour, typically served with curries or yogurt.',
+      chefEmail: 'chefA@example.com',
+      date: '2024-06-01',
+      category: 'Breakfast',
+    },
+    {
+      id: '2',
+      name: 'Bhapa Pitha',
+      image: 'https://www.themealdb.com/images/media/meals/txsupu1511815755.jpg',
+      description: 'Steamed rice cakes filled with jaggery and coconut, a traditional winter delicacy.',
+      chefEmail: 'chefB@example.com',
+      date: '2024-06-02',
+      category: 'Breakfast',
+    },
+    {
+      id: '3',
+      name: 'Luchi and Aloo Dum',
+      image: 'https://www.themealdb.com/images/media/meals/vvpprx1487325699.jpg',
+      description: 'Deep-fried flatbread served with a spicy potato curry.',
+      chefEmail: 'chefC@example.com',
+      date: '2024-06-03',
+      category: 'Breakfast',
+    },
+  ],
+};
+
+const BangladeshiLunch: MealCategory = {
+  id: '2',
+  categoryName: 'Lunch',
+  meals: [
+    {
+      id: '4',
+      name: 'Biryani',
+      image: 'https://www.themealdb.com/images/media/meals/wyxwsp1486979827.jpg',
+      description: 'A mixed rice dish with its origins among the Muslims of the Indian subcontinent.',
+      chefEmail: 'chefA@example.com',
+      date: '2024-06-04',
+      category: 'Lunch',
+    },
+    {
+      id: '5',
+      name: 'Bhuna Khichuri',
+      image: 'https://www.themealdb.com/images/media/meals/xvrrux1511783685.jpg',
+      description: 'A popular Bangladeshi dish made with rice, lentils, and meat or fish.',
+      chefEmail: 'chefB@example.com',
+      date: '2024-06-05',
+      category: 'Lunch',
+    },
+    {
+      id: '6',
+      name: 'Shorshe Ilish',
+      image: 'https://www.themealdb.com/images/media/meals/sytvww1511886980.jpg',
+      description: 'Hilsa fish cooked in a mustard seed paste, a delicacy of Bengali cuisine.',
+      chefEmail: 'chefC@example.com',
+      date: '2024-06-06',
+      category: 'Lunch',
+    },
+  ],
+};
+
+const BangladeshiDinner: MealCategory = {
+  id: '3',
+  categoryName: 'Dinner',
+  meals: [
+    {
+      id: '7',
+      name: 'Kacchi Biryani',
+      image: 'https://www.themealdb.com/images/media/meals/urxywu1511816700.jpg',
+      description: 'A special type of Biryani where raw marinated meat is cooked with rice.',
+      chefEmail: 'chefA@example.com',
+      date: '2024-06-07',
+      category: 'Dinner',
+    },
+    {
+      id: '8',
+      name: 'Tehari',
+      image: 'https://www.themealdb.com/images/media/meals/ysxwuq1487323065.jpg',
+      description: 'A spicier version of biryani, typically made with beef or chicken.',
+      chefEmail: 'chefB@example.com',
+      date: '2024-06-08',
+      category: 'Dinner',
+    },
+    {
+      id: '9',
+      name: 'Morog Polao',
+      image: 'https://www.themealdb.com/images/media/meals/wtsvxx1511296896.jpg',
+      description: 'Chicken pilaf, a popular dish in Bangladeshi cuisine.',
+      chefEmail: 'chefC@example.com',
+      date: '2024-06-09',
+      category: 'Dinner',
+    },
+  ],
+};
+
+const BangladeshiSnacks: MealCategory = {
+  id: '4',
+  categoryName: 'Snacks',
+  meals: [
+    {
+      id: '10',
+      name: 'Fuchka',
+      image: 'https://www.themealdb.com/images/media/meals/utxryw1511721587.jpg',
+      description: 'A popular street food, known as pani puri in other parts of India.',
+      chefEmail: 'chefA@example.com',
+      date: '2024-06-10',
+      category: 'Snacks',
+    },
+    {
+      id: '11',
+      name: 'Chotpoti',
+      image: 'https://www.themealdb.com/images/media/meals/txwypw1511389395.jpg',
+      description: 'A spicy dish made with peas, potatoes, and tamarind water.',
+      chefEmail: 'chefB@example.com',
+      date: '2024-06-11',
+      category: 'Snacks',
+    },
+    {
+      id: '12',
+      name: 'Jhalmuri',
+      image: 'https://www.themealdb.com/images/media/meals/uuxwvq1483907861.jpg',
+      description: 'A spicy puffed rice snack mixed with vegetables and mustard oil.',
+      chefEmail: 'chefC@example.com',
+      date: '2024-06-12',
+      category: 'Snacks',
+    },
+  ],
+};
+
+const BangladeshiDesserts: MealCategory = {
+  id: '5',
+  categoryName: 'Desserts',
+  meals: [
+    {
+      id: '13',
+      name: 'Pithas',
+      image: 'https://www.themealdb.com/images/media/meals/1550440209.jpg',
+      description: 'Traditional homemade cakes, usually made from rice flour and filled with sweet or savory ingredients.',
+      chefEmail: 'chefA@example.com',
+      date: '2024-06-13',
+      category: 'Desserts',
+    },
+    {
+      id: '14',
+      name: 'Rasgulla',
+      image: 'https://www.themealdb.com/images/media/meals/ytvwtp1483908615.jpg',
+      description: 'A syrupy dessert made from ball-shaped dumplings of chhena and semolina dough.',
+      chefEmail: 'chefB@example.com',
+      date: '2024-06-14',
+      category: 'Desserts',
+    },
+    {
+      id: '15',
+      name: 'Chomchom',
+      image: 'https://www.themealdb.com/images/media/meals/1525876468.jpg',
+      description: 'A traditional Bengali sweet made from milk and sugar.',
+      chefEmail: 'chefC@example.com',
+      date: '2024-06-15',
+      category: 'Desserts',
+    },
+  ],
+};
+
 export const Cuisines: Cuisine[] = [
-  { id: '1', name: 'Bangladeshi', image: 'https://foodish-api.com/images/biryani/biryani7.jpg' },
-  { id: '2', name: 'Indian', image: 'https://foodish-api.com/images/butter-chicken/butter-chicken1.jpg' },
-  { id: '3', name: 'Italian', image: 'https://foodish-api.com/images/pasta/pasta4.jpg' },
-  { id: '4', name: 'Chinese', image: 'https://foodish-api.com/images/dessert/dessert30.jpg' },
-  { id: '5', name: 'Mexican', image: 'https://foodish-api.com/images/rice/rice32.jpg' }
+  {
+    id: '1',
+    name: 'Bangladeshi',
+    image: 'https://foodish-api.com/images/biryani/biryani7.jpg',
+    mealCategories: [BangladeshiBreakfast, BangladeshiLunch, BangladeshiDinner, BangladeshiSnacks, BangladeshiDesserts],
+  },
+  {
+    id: '2',
+    name: 'Indian',
+    image: 'https://foodish-api.com/images/butter-chicken/butter-chicken1.jpg',
+    mealCategories: [],
+  },
+  {
+    id: '3',
+    name: 'Italian',
+    image: 'https://foodish-api.com/images/pasta/pasta4.jpg',
+    mealCategories: [],
+  },
+  {
+    id: '4',
+    name: 'Chinese',
+    image: 'https://foodish-api.com/images/dessert/dessert30.jpg',
+    mealCategories: [],
+  },
+  {
+    id: '5',
+    name: 'Mexican',
+    image: 'https://foodish-api.com/images/rice/rice32.jpg',
+    mealCategories: [],
+  },
 ];
 
 export const Chefs: Chef[] = [

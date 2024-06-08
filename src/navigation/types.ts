@@ -1,6 +1,6 @@
 // navigation/types.ts
 
-import { Chef } from "../types/types";
+import { Chef, Cuisine, MealCategory } from "../types/types";
 
 export type RootStackParamList = {
   Login: undefined; // No parameters for the Login screen
@@ -11,4 +11,7 @@ export type RootStackParamList = {
     isCurrentUser: boolean;
   };
   Orders: undefined;
+  CuisineDetails: {
+    cuisine: Cuisine;
+  };
 };

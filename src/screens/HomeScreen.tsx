@@ -20,10 +20,19 @@ const HomeScreen: React.FC<Props> = ({ navigation, route }) => {
   const { authenticated, currentUser, logout } = useAuth();
 
   const renderCuisineItem = ({ item }: { item: Cuisine }) => (
-    <View style={styles.cuisineItem}>
+    <TouchableOpacity
+      style={styles.cuisineItem}
+      onPress={() => {
+        if (authenticated) {
+          navigation.navigate('CuisineDetails', { cuisine: item });
+        } else {
+          Alert.alert('Please log in to view cuisines.');
+        }
+      }}
+    >
       <Image source={{ uri: item.image }} style={styles.cuisineImage} />
       <Text style={styles.cuisineName}>{item.name}</Text>
-    </View>
+    </TouchableOpacity>
   );
 
   const renderChefItem = ({ item }: { item: Chef }) => (
