@@ -108,5 +108,9 @@ export const styles = StyleSheet.create({
   editButtonText: {
     color: '#fff',
     fontSize: 16
-  }
+  },
+  verifiedIcon: {
+    width: 20,
+    height: 20,
+  },
 });

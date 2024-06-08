@@ -122,5 +122,9 @@ export const styles = StyleSheet.create({
   footerText: {
     fontSize: 14,
     color: '#666'
-  }
+  },
+  verifiedIcon: {
+    width: 20,
+    height: 20,
+  },
 });
