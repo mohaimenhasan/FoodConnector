@@ -6,10 +6,17 @@ export type Cuisine = {
   image: string;
 };
 
-export type Chef = {
+export type User = {
   id: string;
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
+  phone: string;
+  address: string;
+  verified: boolean;
+};
+
+export type Chef = User & {
   description: string;
   image: string;
   followers: number;

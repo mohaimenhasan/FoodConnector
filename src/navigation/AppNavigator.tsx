@@ -3,20 +3,29 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../screens/HomeScreen';
 import ProfileScreen from '../screens/ProfileScreen';
-import OrdersScreen from '../screens/OrdersScreen';
 import { RootStackParamList } from './types'; // Adjust the import path as necessary
+import LoginScreen from '../screens/LoginScreen';
+import SignupScreen from '../screens/SignupScreen';
+import { useAuth } from '../contexts/AuthContext';
 
 
 const Stack = createStackNavigator<RootStackParamList>();
 
 const AppNavigator: React.FC = () => {
+  const { authenticated } = useAuth();
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} />
+        {!authenticated && (
+          <>
+            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="Signup" component={SignupScreen} />
+          </>
+        )}
         <Stack.Screen name="Profile" component={ProfileScreen} />
-        <Stack.Screen name="Orders" component={OrdersScreen} />
-      </Stack.Navigator>
+    </Stack.Navigator>
     </NavigationContainer>
   );
 };

@@ -1,51 +1,17 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, FlatList, ScrollView } from 'react-native';
+import { View, Text, Image, TouchableOpacity, FlatList, ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { launchImageLibrary } from 'react-native-image-picker';
 import { styles } from '../styles/ProfileScreenStyles';
-import { RootStackParamList } from '../navigation/types'; // Adjust the import path as necessary
-import { RouteProp } from '@react-navigation/native';
+import { useAuth } from '../contexts/AuthContext';
+import { Chef } from '../types/types';
 
-type ProfileScreenRouteProp = RouteProp<RootStackParamList, 'Profile'>;
-type Props = {
-  route: ProfileScreenRouteProp;
-};
-
-interface GalleryItem {
-  uri: string;
-}
-
-interface Review {
-  id: string;
-  reviewer: string;
-  comment: string;
-  rating: number;
-}
-
-interface Profile {
-  name: string;
-  description: string;
-  contactInfo: string;
-  followers: number;
-  reviews: number;
-  rating: number;
-  gallery: GalleryItem[];
-  reviewsList: Review[];
-}
-
-function ProfileScreen({ route }: Props) {
+const ProfileScreen: React.FC<{ route: any }> = ({ route }) => {
   const { chef } = route.params;
+  const { authenticated } = useAuth();
+  const isCurrentUser = authenticated && chef.email === 'user@example.com'; // Replace with actual user check
 
-  const [profile, setProfile] = useState<Profile>({
-    name: chef.name,
-    description: chef.description,
-    contactInfo: chef.email,
-    followers: chef.followers,
-    reviews: chef.reviews,
-    rating: chef.rating,
-    gallery: chef.gallery,
-    reviewsList: chef.reviewsList
-  });
+  const [profile, setProfile] = useState<Chef>(chef);
 
   const handleImagePicker = () => {
     launchImageLibrary({
@@ -64,10 +30,14 @@ function ProfileScreen({ route }: Props) {
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.header}>
-          <Image source={{ uri: chef.image }} style={styles.profileImage} />
-          <Text style={styles.name}>{profile.name}</Text>
+          <Image source={{ uri: profile.image }} style={styles.profileImage} />
+          <Text style={styles.name}>
+            {profile.firstName} {profile.lastName} {profile.verified && <Image source={require('../assets/verified.png')} style={styles.verifiedIcon} />}
+          </Text>
           <Text style={styles.description}>{profile.description}</Text>
-          <Text style={styles.contact}>{profile.contactInfo}</Text>
+          <Text style={styles.contact}>{profile.email}</Text>
+          <Text style={styles.contact}>{profile.phone}</Text>
+          <Text style={styles.contact}>{profile.address}</Text>
         </View>
 
         <View style={styles.stats}>
@@ -100,9 +70,11 @@ function ProfileScreen({ route }: Props) {
             )}
             horizontal
           />
-          <TouchableOpacity style={styles.uploadButton} onPress={handleImagePicker}>
-            <Text style={styles.uploadButtonText}>Upload Media</Text>
-          </TouchableOpacity>
+          {isCurrentUser && (
+            <TouchableOpacity style={styles.uploadButton} onPress={handleImagePicker}>
+              <Text style={styles.uploadButtonText}>Upload Media</Text>
+            </TouchableOpacity>
+          )}
         </View>
 
         <View style={styles.reviews}>
@@ -116,12 +88,21 @@ function ProfileScreen({ route }: Props) {
           ))}
         </View>
 
-        <TouchableOpacity style={styles.editButton}>
-          <Text style={styles.editButtonText}>Edit Profile</Text>
-        </TouchableOpacity>
+        {isCurrentUser && (
+          <TouchableOpacity style={styles.editButton}>
+            <Text style={styles.editButtonText}>Edit Profile</Text>
+          </TouchableOpacity>
+        )}
       </ScrollView>
     </SafeAreaView>
   );
 };
 
 export default ProfileScreen;
+
+const localStyles = StyleSheet.create({
+  verifiedIcon: {
+    width: 20,
+    height: 20,
+  },
+});
