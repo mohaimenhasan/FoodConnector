@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../navigation/AppNavigator';
 import { styles } from '../styles/HomeScreenStyles';
-import { cuisines, chefs, testimonials } from '../assets/ExampleData'; // replace this with API
+import { MainImageUri, Cuisines, Chefs, Testimonials } from '../assets/ExampleData'; // replace this with API
 
 const { width: screenWidth } = Dimensions.get('window');
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
@@ -40,14 +40,14 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
         <View style={styles.hero}>
-          <Text style={styles.tagline}>Local Caterers to Home</Text>
-          <Image source={{ uri: 'https://foodish-api.com/images/biryani/biryani7.jpg' }} style={styles.heroImage} />
+          <Text style={styles.tagline}>Local Bangladeshi Caterers to Home</Text>
+          <Image source={{ uri: MainImageUri }} style={styles.heroImage} />
         </View>
 
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Featured Cuisines</Text>
           <FlatList
-            data={cuisines}
+            data={Cuisines}
             renderItem={renderCuisineItem}
             keyExtractor={(item) => item.id}
             horizontal
@@ -62,7 +62,7 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Top Chefs</Text>
           <FlatList
-            data={chefs}
+            data={Chefs}
             renderItem={renderChefItem}
             keyExtractor={(item) => item.id}
             horizontal
@@ -74,7 +74,7 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Customer Testimonials</Text>
           <FlatList
-            data={testimonials}
+            data={Testimonials}
             renderItem={renderTestimonialItem}
             keyExtractor={(item) => item.id}
             horizontal

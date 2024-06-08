@@ -1,6 +1,8 @@
 // ExampleData.ts
 
-export const cuisines = [
+export const MainImageUri = 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800&h=400&fit=crop';
+
+export const Cuisines = [
   { id: '1', name: 'Bangladeshi', image: 'https://foodish-api.com/images/biryani/biryani7.jpg' },
   { id: '2', name: 'Indian', image: 'https://foodish-api.com/images/butter-chicken/butter-chicken1.jpg' },
   { id: '3', name: 'Italian', image: 'https://foodish-api.com/images/pasta/pasta4.jpg' },
@@ -8,7 +10,7 @@ export const cuisines = [
   { id: '5', name: 'Mexican', image: 'https://foodish-api.com/images/rice/rice32.jpg' }
 ];
 
-export const chefs = [
+export const Chefs = [
   { id: '1', name: 'Jane Doe', description: 'Expert in Bangladeshi cuisine', image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop' },
   { id: '2', name: 'John Smith', description: 'Specializes in Indian dishes', image: 'https://images.unsplash.com/photo-1552058544-f2b08422138a?w=150&h=150&fit=crop' },
   { id: '3', name: 'Emily Clark', description: 'Italian cuisine connoisseur', image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=150&h=150&fit=crop' },
@@ -16,7 +18,7 @@ export const chefs = [
   { id: '5', name: 'Maria Garcia', description: 'Mexican food expert', image: 'https://images.unsplash.com/photo-1534330207526-8e6a4495396c?w=150&h=150&fit=crop' }
 ];
 
-export const testimonials = [
+export const Testimonials = [
   { id: '1', name: 'Nguyen Thi Anh', review: 'This site made my event unforgettable with its exceptional catering service. The Bangladeshi cuisine was a hit among my guests!', rating: 5 },
   { id: '2', name: 'Dewi Sartika', review: 'I was skeptical about finding a good caterer online, but this platform proved me wrong. The Indian dishes were authentic and delicious.', rating: 5 },
   { id: '3', name: 'Ahmad Zulkifli', review: 'The Italian catering I found here was top-notch. The chefs are genuine artisans. It made our corporate event stand out.', rating: 5 },
