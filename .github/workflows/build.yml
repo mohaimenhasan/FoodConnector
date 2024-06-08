@@ -1,0 +1,52 @@
+name: CI/CD Pipeline
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install
+
+    #- name: Lint
+    #  run: npm run lint # Make sure you have a lint script in your package.json
+
+    #- name: Run tests
+    #  run: npm test # Make sure you have a test script in your package.json
+
+    #- name: Security Scan
+    #  run: npm audit # Or use a third-party action for more comprehensive scans
+
+    #- name: Build the project
+    #  run: npm run build
+
+  deploy:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Deploy to Production
+      run: echo "Deploying to production" # Replace this with your actual deployment command
+
+  notify:
+    needs: deploy
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+    - name: Send Notification
+      run: echo "Build and Deployment completed" # Replace this with actual notification logic, such as sending a message to Slack
